@@ -11,17 +11,41 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/process/new/page": [
+    "/practices/new/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/process/new/page.css",
-      "static/chunks/app/process/new/page.js"
+      "static/css/app/practices/new/page.css",
+      "static/chunks/app/practices/new/page.js"
+    ],
+    "/patterns/new/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/patterns/new/page.css",
+      "static/chunks/app/patterns/new/page.js"
+    ],
+    "/thinklets/new/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thinklets/new/page.css",
+      "static/chunks/app/thinklets/new/page.js"
     ],
     "/activities/list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/activities/list/page.css",
       "static/chunks/app/activities/list/page.js"
+    ],
+    "/activities/new/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/activities/new/page.css",
+      "static/chunks/app/activities/new/page.js"
+    ],
+    "/roles/new/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/roles/new/page.css",
+      "static/chunks/app/roles/new/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

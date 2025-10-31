@@ -678,3 +678,39 @@
   font-weight: 600;
 }
 
+select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
+
+/* === Selects uniformes === */
+select {
+  font-size: 1rem; /* igual que los inputs */
+  color: #374151; /* text-gray-700 */
+  background-color: #fff;
+  border: 2px solid #3b82f6; /* azul */
+  border-radius: 1rem; /* ⬅️ más redondeado (antes 0.5rem) */
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+/* Hover: azul más brillante y sutil glow */
+select:hover {
+  outline: none;
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 2px oklch(0.55 0.22 250);
+}
+
+/* Focus: pasa a gris cuando se selecciona */
+select:focus {
+  border-color: #9ca3af; /* gray-400 */
+}
+
+/* Opciones dentro del menú desplegable */
+select option {
+  color: #111827;
+  background-color: #fff;
+  font-size: 1rem;
+}
