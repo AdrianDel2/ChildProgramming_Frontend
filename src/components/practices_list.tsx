@@ -1,72 +1,63 @@
 "use client"
-
 import { useEffect, useState } from "react"
-import { Button } from "../components/ui/button"
-import { Plus } from "lucide-react"
-import { ScrollArea } from "../components/ui/scroll-area"
-import { Badge } from "../components/ui/badge"
+import { Eye, Edit, Trash2 } from "lucide-react"
+import Link from "next/link"
 
 interface Practice {
-  id: number
-  name: string
-  description: string
+  id_practice: number
+  name_practice: string
+  description_practice: string
+  type_practice: string
 }
 
-export function Practice_list() {
+export function PracticeList({ searchTerm }: { searchTerm?: string }) {
   const [practices, setPractices] = useState<Practice[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchPractices()
-  }, [])
+  useEffect(() => { fetchPractices() }, [])
 
   const fetchPractices = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/practice/list")
+      const response = await fetch("/api/practices/list", { cache: "no-store" })
+      if (!response.ok) throw new Error("Error al obtener prácticas")
       const data = await response.json()
       setPractices(data)
-    } catch (error) {
-      console.error("Error fetching practices:", error)
+    } catch {
+      setError("Error al cargar las prácticas")
     } finally {
       setLoading(false)
     }
   }
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="font-semibold">Prácticas</h3>
-        <Button size="sm" variant="outline">
-          <Plus className="h-4 w-4" />
-        </Button>
-      </div>
+  const handleDelete = async (id: number) => {
+    if (!confirm("¿Seguro que deseas eliminar esta práctica?")) return
+    await fetch(`http://localhost:8080/api/practice/delete/${id}`, { method: "DELETE" })
+    fetchPractices()
+  }
 
-      {loading ? (
-        <p className="text-sm text-muted-foreground">Cargando...</p>
-      ) : practices.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No hay prácticas</p>
-      ) : (
-        <ScrollArea className="h-[300px]">
-          <div className="space-y-2">
-            {practices.map((practice) => (
-              <div
-                key={practice.id}
-                className="p-3 rounded-lg border bg-card hover:bg-accent transition-colors cursor-pointer"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm truncate">{practice.name}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-2">{practice.description}</p>
-                  </div>
-                  <Badge variant="secondary" className="shrink-0">
-                    {practice.id}
-                  </Badge>
-                </div>
-              </div>
-            ))}
+  const normalize = (t?: string) => (t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+  const filtered = practices.filter(p => normalize(p.name_practice).includes(normalize(searchTerm)) || normalize(p.description_practice).includes(normalize(searchTerm)))
+
+  if (loading) return <p className="text-center py-10 text-blue-600">Cargando prácticas...</p>
+  if (error) return <p className="text-center py-10 text-red-500">{error}</p>
+  if (practices.length === 0) return <p className="text-center py-10 text-gray-500">No existen prácticas todavía.</p>
+
+  return (
+    <div className="grid gap-6 mt-6">
+      {filtered.map(practice => (
+        <div key={practice.id_practice} className="processCardContainer">
+          <div className="flex flex-col items-center p-6">
+            <h2 className="text-lg font-semibold">{practice.name_practice}</h2>
+            <p className="text-gray-600 mb-4">{practice.description_practice}</p>
+            <div className="processButtonGroup">
+              <Link href={`/practices/${practice.id_practice}`}><button className="processButton view"><Eye className="h-4 w-4"/>Ver</button></Link>
+              <Link href={`/practices/${practice.id_practice}/edit`}><button className="processButton edit"><Edit className="h-4 w-4"/>Editar</button></Link>
+              <button className="processButton delete" onClick={() => handleDelete(practice.id_practice)}><Trash2 className="h-4 w-4"/>Eliminar</button>
+            </div>
           </div>
-        </ScrollArea>
-      )}
+        </div>
+      ))}
     </div>
   )
 }

@@ -65,6 +65,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/patterns/list/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/patterns/list">> = Specific
+  const handler = {} as typeof import("../../src/app/patterns/list/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/practices/list/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/practices/list">> = Specific
+  const handler = {} as typeof import("../../src/app/practices/list/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/process/[id]/edit/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/process/[id]/edit">> = Specific
@@ -96,6 +114,42 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/process">> = Specific
   const handler = {} as typeof import("../../src/app/process/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/roles/list/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/roles/list">> = Specific
+  const handler = {} as typeof import("../../src/app/roles/list/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/rounds/list/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/rounds/list">> = Specific
+  const handler = {} as typeof import("../../src/app/rounds/list/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/thinklets/list/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/thinklets/list">> = Specific
+  const handler = {} as typeof import("../../src/app/thinklets/list/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/Patterns/list/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/Patterns/list">> = Specific
+  const handler = {} as typeof import("../../src/app/api/Patterns/list/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -137,6 +191,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/api/patterns/list/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/patterns/list">> = Specific
+  const handler = {} as typeof import("../../src/app/api/patterns/list/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/practices/list/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/practices/list">> = Specific
+  const handler = {} as typeof import("../../src/app/api/practices/list/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/api/roles/list/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/roles/list">> = Specific
@@ -150,6 +222,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/rounds/list">> = Specific
   const handler = {} as typeof import("../../src/app/api/rounds/list/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/api/thinklets/list/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/thinklets/list">> = Specific
+  const handler = {} as typeof import("../../src/app/api/thinklets/list/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

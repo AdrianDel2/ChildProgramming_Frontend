@@ -1,25 +1,26 @@
 export type Role = {
-  id: number;
-  name: string;
-  description: string;
+  id_role: number;
+  name_role: string;
+  description_role: string;
+  skills_role: string;
 };
 
 export type Practice = {
-  id: number;
-  name: string;
-  description: string;
+  id_practice: number;
+  name_practice: string;
+  description_practice: string;
 };
 
 export type Thinklet = {
-  id: number;
-  name: string;
-  description: string;
+  id_thinklet: number;
+  name_thinklet: string;
+  description_thinklet: string;
 };
 
 export type CollaborativePattern = {
-  id: number;
-  name: string;
-  description: string;
+  id_pattern: number;
+  name_pattern: string;
+  description_pattern: string;
 };
 
 export type Round = {
@@ -36,23 +37,18 @@ export interface Process {
   description_process: string
   version_process?: string
   image?: string
-  facilitator?: {
-    id_role: number
-    name_role: string
-  } | null
 }
 
 export interface CreateProcessData {
-  name: string
-  version?: string
+  name_process: string
+  version_process?: string
   image?: string
-  facilitator?: string
 }
 
 export type Activity = {
-  id: number;
-  name: string;
-  description: string;
+  id_activity: number;
+  name_activity: string;
+  description_activity: string;
   processId: number;
 };
 

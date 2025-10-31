@@ -1,11 +1,11 @@
 "use client"
 
 import { Sidebar } from "@/components/ui/sidebar"
-import { ActivityList } from "@/components/activity_list"
+import { ActivityList } from "@/components/activity/activity_list"
 import { Plus, Search } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
-import "../../global.css" // ✅ importa tus estilos globales
+import "../../global.css" 
 
 export default function ActivitiesListPage() {
   const [searchTerm, setSearchTerm] = useState("")
