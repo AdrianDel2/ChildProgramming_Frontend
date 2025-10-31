@@ -31,7 +31,7 @@ export function PracticeForm() {
       })
 
       if (response.ok) {
-        router.push("/practices")
+        router.push("/practices/list")
       } else {
         const errorText = await response.text()
         alert("Error al crear la práctica: " + errorText)

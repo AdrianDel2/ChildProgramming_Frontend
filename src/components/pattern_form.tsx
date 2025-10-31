@@ -29,7 +29,7 @@ export function CollaborativePatternForm() {
       })
 
       if (response.ok) {
-        router.push("/patterns") // redirige al listado de patrones
+        router.push("/patterns/list") // redirige al listado de patrones
       } else {
         const errorText = await response.text()
         alert("Error al crear el patrón: " + errorText)

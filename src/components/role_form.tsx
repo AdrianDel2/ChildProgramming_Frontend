@@ -30,7 +30,7 @@ export function RoleForm() {
       })
 
       if (response.ok) {
-        router.push("/roles") // redirigir al listado
+        router.push("/roles/list") // redirigir al listado
       } else {
         const errorText = await response.text()
         alert("Error al crear el rol: " + errorText)

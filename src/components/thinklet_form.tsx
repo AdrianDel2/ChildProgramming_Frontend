@@ -51,7 +51,7 @@ export function ThinkletForm() {
       })
 
       if (response.ok) {
-        router.push("/thinklets")
+        router.push("/thinklets/list")
       } else {
         const errorText = await response.text()
         alert("Error al crear el thinklet: " + errorText)

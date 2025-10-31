@@ -1,20 +1,19 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Button } from "../components/ui/button"
-import { Plus } from "lucide-react"
-import { ScrollArea } from "../components/ui/scroll-area"
-import { Badge } from "../components/ui/badge"
+import { Eye, Edit, Trash2 } from "lucide-react"
+import Link from "next/link"
 
 interface Role {
-  id: number
-  name: string
-  description: string
+  id_role: number
+  name_role: string
+  description_role: string
 }
 
-export function Role_list() {
+export function RoleList({ searchTerm }: { searchTerm?: string }) {
   const [roles, setRoles] = useState<Role[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     fetchRoles()
@@ -22,51 +21,100 @@ export function Role_list() {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/role/list")
+      const response = await fetch("/api/roles/list", { cache: "no-store" })
+      if (!response.ok) throw new Error("Error al obtener los roles")
       const data = await response.json()
       setRoles(data)
+      setError(null)
     } catch (error) {
       console.error("Error fetching roles:", error)
+      setError("Error al cargar los roles")
     } finally {
       setLoading(false)
     }
   }
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="font-semibold">Roles</h3>
-        <Button size="sm" variant="outline">
-          <Plus className="h-4 w-4" />
-        </Button>
-      </div>
+  const handleDelete = async (id: number) => {
+    if (!confirm("¿Seguro que deseas eliminar este rol?")) return
+    try {
+      const res = await fetch(`http://localhost:8080/api/role/delete/${id}`, {
+        method: "DELETE",
+      })
+      if (!res.ok) throw new Error("Error al eliminar el rol")
+      fetchRoles()
+    } catch (error) {
+      console.error("Error eliminando rol:", error)
+      alert("Error al eliminar el rol")
+    }
+  }
 
-      {loading ? (
-        <p className="text-sm text-muted-foreground">Cargando...</p>
-      ) : roles.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No hay roles</p>
-      ) : (
-        <ScrollArea className="h-[300px]">
-          <div className="space-y-2">
-            {roles.map((role) => (
-              <div
-                key={role.id}
-                className="p-3 rounded-lg border bg-card hover:bg-accent transition-colors cursor-pointer"
+  // 🔍 Normaliza texto (sin tildes, en minúscula)
+  const normalize = (text?: string) =>
+    (text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+
+  const filtered = roles.filter((role) => {
+    const query = normalize(searchTerm)
+    return (
+      normalize(role.name_role).includes(query) ||
+      normalize(role.description_role).includes(query)
+    )
+  })
+
+  // 🧩 Mensajes de carga / error / vacío
+  if (loading)
+    return <div className="text-center py-10 text-blue-600 text-lg">Cargando roles...</div>
+
+  if (error)
+    return (
+      <div className="text-center py-10 text-red-500 text-lg">
+        {error}
+        <button className="processButton view ml-4" onClick={fetchRoles}>
+          Reintentar
+        </button>
+      </div>
+    )
+
+  if (roles.length === 0)
+    return <div className="text-center py-10 text-gray-500">No existen roles todavía.</div>
+
+  // ✅ Lista renderizada con botones
+  return (
+    <div className="grid gap-6 mt-6">
+      {filtered.map((role) => (
+        <div key={role.id_role} className="processCardContainer">
+          <div className="flex flex-col items-center justify-center p-6">
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">{role.name_role}</h2>
+            <p className="text-gray-600 mb-3">{role.description_role}</p>
+
+            <div className="processButtonGroup">
+              {/* Ver rol */}
+              <Link href={`/roles/${role.id_role}`}>
+                <button className="processButton view">
+                  <Eye className="h-4 w-4" />
+                  Ver
+                </button>
+              </Link>
+
+              {/* Editar rol */}
+              <Link href={`/roles/${role.id_role}/edit`}>
+                <button className="processButton edit">
+                  <Edit className="h-4 w-4" />
+                  Editar
+                </button>
+              </Link>
+
+              {/* Eliminar rol */}
+              <button
+                className="processButton delete"
+                onClick={() => handleDelete(role.id_role)}
               >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-sm truncate">{role.name}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-2">{role.description}</p>
-                  </div>
-                  <Badge variant="secondary" className="shrink-0">
-                    {role.id}
-                  </Badge>
-                </div>
-              </div>
-            ))}
+                <Trash2 className="h-4 w-4" />
+                Eliminar
+              </button>
+            </div>
           </div>
-        </ScrollArea>
-      )}
+        </div>
+      ))}
     </div>
   )
 }

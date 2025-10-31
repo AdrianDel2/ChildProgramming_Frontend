@@ -1,8 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/patterns/new/page": "app/patterns/new/page.js",
-  "/thinklets/new/page": "app/thinklets/new/page.js",
-  "/activities/list/page": "app/activities/list/page.js",
-  "/activities/new/page": "app/activities/new/page.js",
-  "/roles/new/page": "app/roles/new/page.js"
+  "/api/roles/list/route": "app/api/roles/list/route.js",
+  "/page": "app/page.js",
+  "/process/new/page": "app/process/new/page.js",
+  "/roles/list/page": "app/roles/list/page.js"
 }

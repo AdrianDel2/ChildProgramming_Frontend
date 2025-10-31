@@ -16,37 +16,32 @@ export function Sidebar(): JSX.Element {
   const [open, setOpen] = useState(false)
 
   const links: NavLink[] = [
-    { name: "Procesos", href: "/process/new" },
+    { name: "Procesos", href: "/" },
     { name: "Actividades", href: "/activities/list" },
-    { name: "Roles", href: "/roles" },
-    { name: "Rondas", href: "/rounds" },
-    { name: "Prácticas", href: "/practices" },
-    { name: "Thinklets", href: "/thinklets" },
-    { name: "Patrones", href: "/patterns" },
+    { name: "Roles", href: "/roles/list" },
+    { name: "Rondas", href: "/rounds/list" },
+    { name: "Prácticas", href: "/practices/list" },
+    { name: "Thinklets", href: "/thinklets/list" },
+    { name: "Patrones", href: "/patterns/list" },
   ]
 
-  // Cerrar al hacer clic en un enlace
   const handleLinkClick = () => {
     if (window.innerWidth <= 768) setOpen(false)
   }
 
   return (
     <>
-      {/* Botón móvil flotante */}
-      <button 
-        className="mobileMenuButton"
-        onClick={() => setOpen(!open)}
-      >
+      {/* Botón móvil */}
+      <button className="mobileMenuButton" onClick={() => setOpen(!open)}>
         <Menu size={24} />
       </button>
 
-      {/* Overlay al abrir sidebar */}
+      {/* Overlay móvil */}
       {open && <div className="sidebarOverlay" onClick={() => setOpen(false)}></div>}
 
       {/* Sidebar */}
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="sidebarHeader">
-          {/* Icono que también abre/cierra */}
           <Menu
             size={20}
             className="menuIcon"
