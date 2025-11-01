@@ -51,7 +51,7 @@ export function ThinkletList({ searchTerm }: { searchTerm?: string }) {
             <p className="text-gray-600 mb-4">{thinklet.description_thinklet}</p>
             <div className="processButtonGroup">
               <Link href={`/thinklets/${thinklet.id_thinklet}`}><button className="processButton view"><Eye className="h-4 w-4"/>Ver</button></Link>
-              <Link href={`/thinklets/${thinklet.id_thinklet}/edit`}><button className="processButton edit"><Edit className="h-4 w-4"/>Editar</button></Link>
+              <Link href={`/thinklets/edit/${thinklet.id_thinklet}`}><button className="processButton edit"><Edit className="h-4 w-4"/>Editar</button></Link>
               <button className="processButton delete" onClick={() => handleDelete(thinklet.id_thinklet)}><Trash2 className="h-4 w-4"/>Eliminar</button>
             </div>
           </div>

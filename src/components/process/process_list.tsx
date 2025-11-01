@@ -88,8 +88,6 @@ export function Process_list({ searchTerm }: { searchTerm?: string }) {
               <h2 className="text-lg font-semibold text-gray-800">{process.name_process}</h2>
             </div>
 
-            <p className="text-gray-600">{process.facilitator ? process.facilitator.name_role : "Sin facilitador"}</p>
-
             <p className="text-gray-700 mt-2 mb-4">{process.description_process}</p>
 
             <div className="processButtonGroup">
@@ -100,7 +98,7 @@ export function Process_list({ searchTerm }: { searchTerm?: string }) {
                 </button>
               </Link>
 
-              <Link href={`/procesos/${process.id_process}/editar`}>
+              <Link href={`/process/edit/${process.id_process}`}>
                 <button className="processButton edit">
                   <Edit className="h-4 w-4" />
                   Editar

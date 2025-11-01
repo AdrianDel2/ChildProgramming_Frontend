@@ -11,28 +11,56 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/page": [
+    "/practices/list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/css/app/practices/list/page.css",
+      "static/chunks/app/practices/list/page.js"
     ],
-    "/process/new/page": [
+    "/api/practices/list/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/process/new/page.css",
-      "static/chunks/app/process/new/page.js"
+      "static/chunks/app/api/practices/list/route.js"
     ],
-    "/roles/list/page": [
+    "/practices/edit/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/roles/list/page.css",
-      "static/chunks/app/roles/list/page.js"
+      "static/css/app/practices/edit/[id]/page.css",
+      "static/chunks/app/practices/edit/[id]/page.js"
     ],
-    "/api/roles/list/route": [
+    "/thinklets/list/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/roles/list/route.js"
+      "static/css/app/thinklets/list/page.css",
+      "static/chunks/app/thinklets/list/page.js"
+    ],
+    "/api/thinklets/list/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/thinklets/list/route.js"
+    ],
+    "/patterns/list/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/patterns/list/page.css",
+      "static/chunks/app/patterns/list/page.js"
+    ],
+    "/api/patterns/list/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/patterns/list/route.js"
+    ],
+    "/patterns/edit/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/patterns/edit/[id]/page.css",
+      "static/chunks/app/patterns/edit/[id]/page.js"
+    ],
+    "/thinklets/edit/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thinklets/edit/[id]/page.css",
+      "static/chunks/app/thinklets/edit/[id]/page.js"
     ]
   }
 }
