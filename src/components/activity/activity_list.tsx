@@ -107,7 +107,7 @@ export function ActivityList({ searchTerm }: { searchTerm?: string }) {
                 </button>
               </Link>
 
-              <Link href={`/activities/${activity.id_activity}/edit`}>
+              <Link href={`/activities/edit/${activity.id_activity}`}>
                 <button className="processButton edit">
                   <Edit className="h-4 w-4" />
                   Editar

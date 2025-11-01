@@ -81,7 +81,7 @@ export function PatternList({ searchTerm }: { searchTerm?: string }) {
                   Ver
                 </button>
               </Link>
-              <Link href={`/patterns/${pattern.id_pattern}/edit`}>
+              <Link href={`/patterns/edit/${pattern.id_pattern}`}>
                 <button className="processButton edit">
                   <Edit className="h-4 w-4" />
                   Editar

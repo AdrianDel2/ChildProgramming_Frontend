@@ -1,10 +1,8 @@
 {
-  "/api/practices/list/route": "app/api/practices/list/route.js",
-  "/api/rounds/list/route": "app/api/rounds/list/route.js",
   "/api/thinklets/list/route": "app/api/thinklets/list/route.js",
-  "/roles/list/page": "app/roles/list/page.js",
-  "/rounds/list/page": "app/rounds/list/page.js",
-  "/practices/list/page": "app/practices/list/page.js",
+  "/practices/edit/[id]/page": "app/practices/edit/[id]/page.js",
   "/thinklets/list/page": "app/thinklets/list/page.js",
-  "/patterns/list/page": "app/patterns/list/page.js"
+  "/patterns/list/page": "app/patterns/list/page.js",
+  "/patterns/edit/[id]/page": "app/patterns/edit/[id]/page.js",
+  "/thinklets/edit/[id]/page": "app/thinklets/edit/[id]/page.js"
 }

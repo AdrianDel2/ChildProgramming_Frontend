@@ -96,7 +96,7 @@ export function RoleList({ searchTerm }: { searchTerm?: string }) {
               </Link>
 
               {/* Editar rol */}
-              <Link href={`/roles/${role.id_role}/edit`}>
+              <Link href={`/roles/edit/${role.id_role}`}>
                 <button className="processButton edit">
                   <Edit className="h-4 w-4" />
                   Editar

@@ -52,7 +52,7 @@ export function PracticeList({ searchTerm }: { searchTerm?: string }) {
             <p className="text-gray-600 mb-4">{practice.description_practice}</p>
             <div className="processButtonGroup">
               <Link href={`/practices/${practice.id_practice}`}><button className="processButton view"><Eye className="h-4 w-4"/>Ver</button></Link>
-              <Link href={`/practices/${practice.id_practice}/edit`}><button className="processButton edit"><Edit className="h-4 w-4"/>Editar</button></Link>
+              <Link href={`/practices/edit/${practice.id_practice}`}><button className="processButton edit"><Edit className="h-4 w-4"/>Editar</button></Link>
               <button className="processButton delete" onClick={() => handleDelete(practice.id_practice)}><Trash2 className="h-4 w-4"/>Eliminar</button>
             </div>
           </div>
